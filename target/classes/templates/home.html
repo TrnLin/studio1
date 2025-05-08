@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <body>
+    <!-- Navigation -->
+    <nav class="w3-bar w3-black">
+      <a href="/" class="w3-button w3-bar-item">Home</a>
+      <a href="/input" class="w3-button w3-bar-item">Input</a>
+    </nav>
+
+    <section class="w3-container w3-center w3-content" style="max-width: 600px">
+      <h2 class="w3-wide">THE CLIMATE DATA CENTER</h2>
+      <p class="w3-opacity"><i>We have data</i></p>
+      <p
+        th:text="'The data available for region temperature spans from ' + ${StartYearLand} + ' to ' + ${EndYearLand} + ' (' + ${TempLandYears} + ' years)'"
+      />
+      <p
+        th:text="'The data available for global temperature spans from ' + ${StartYearGlobal} + ' to ' + ${EndYearGlobal} + ' (' + ${TempGlobalYears} + ' years)'"
+      />
+      <p
+        th:text="'The data available for population spans from ' + ${StartYearPopulation} + ' to ' + ${EndYearPopulation} + ' (' + ${GlobalPopuYears} + ' years)'"
+      />
+      <h1>
+        Add the Personas and collaborators (already added the database (Personas
+        + Student.db) and the URL string in the JDBCConnection.java as DATABASE2
+        (Edit from C:\Gaming\minhkhoi\Information technology\Database\Studio
+        Project 1) and copy paste it into this folder)
+      </h1>
+    </section>
+  </body>
+</html>

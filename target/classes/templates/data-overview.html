@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/data-overview.css" />
+    <title>Project Studio</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="*">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="*">About</a></li>
+            <li><a href="*">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="#">Data Overview</a>
+                  <a href="#">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="*"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+            <li>
+              <a href="*"
+                ><span>Setting</span>
+                <span class="material-icon">settings</span></a
+              >
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <section class="first">
+      <div class="wrap">
+        <!--World/Country option-->
+        <div class="custom-select">
+          <select>
+            <option value="0">World</option>
+            <option value="1">World</option>
+            <option value="2">Country</option>
+          </select>
+        </div>
+
+        <!--Search bar-->
+        <div class="search-bar">
+          <div class="year-input-container">
+            <div class="input-name">Start Year</div>
+            <input
+              type="text"
+              id="starting-year-input"
+              class="input-box"
+              placeholder="User Input"
+            />
+          </div>
+          <div class="year-input-container">
+            <div class="input-name">End Year</div>
+
+            <input
+              type="text"
+              id="ending-year-input"
+              class="input-box"
+              placeholder="User Input"
+              onkeyup="similarYear()"
+            />
+          </div>
+        </div>
+
+        <!--Data diagram-->
+        <div class="dashboard">
+          <div class="info-box">
+            <div class="box-container">
+              <div id="region-name" class="title">World</div>
+              <div class="content-container">
+                <div class="container">
+                  <div class="label">Country</div>
+                  <span id="availabel-countries" class="content">202</span>
+                </div>
+                <div class="container">
+                  <div class="label">Country Code</div>
+                  <span id="country-code" class="content">WLD</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-container">
+              <div id="starting-year" class="title">1910</div>
+              <div class="content-container">
+                <div class="container">
+                  <div class="label">Population</div>
+                  <span id="starting-year-population" class="content"
+                    >5.293.517.142</span
+                  >
+                </div>
+                <div class="container">
+                  <div class="label">Temperature</div>
+                  <span id="starting-year-temperature" class="content"
+                    >9.234°C</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="box-container">
+              <div id="ending-year" class="title">2015</div>
+              <div class="content-container">
+                <div class="container">
+                  <div class="label">Population</div>
+                  <span id="ending-year-population" class="content"
+                    >5.293.517.142</span
+                  >
+                </div>
+                <div class="container">
+                  <div class="label">Temperature</div>
+                  <span id="ending-year-temperature" class="content"
+                    >9.234°C</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="title">Population</div>
+            <div class="graph">
+              <canvas id="population"></canvas>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="title">Temper</div>
+            <div class="graph">
+              <canvas id="temperature"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="#" class="linked">About Us</a
+          ><a href="#" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="#" class="linked">Temperature Data</a
+          ><a href="#" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="#" class="linked">How to use</a
+          ><a href="#" class="linked">Credit</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="#" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="#" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/data-overview.js"></script>
+  </body>
+</html>

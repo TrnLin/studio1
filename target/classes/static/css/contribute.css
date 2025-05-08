@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poppins&display=swap');
+@import url(menu.css);
+
+:root {
+    /* colors */
+    --main: #F9B572;
+    --second: #F2C57A;
+    --ascent: #EFC65C;
+    --bg: #F1F2E9;
+    --error: #ff6060;
+    --black: #000000;
+    --white: #ffffff;
+    --trans-white: rgba(255, 255, 255, .5);
+
+    /*additional*. */
+    --box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+
+    /* font size */
+    --hero: 6rem;
+    --header: 2.25rem;
+    --small-header: 1.5rem;
+    --label: 1.875rem;
+    --small-label: 1.25rem;
+    --content: 1.125rem;
+    --small-content: 1rem;
+    --bold: 700;
+    --light: 400;
+
+}
+
+section {
+    min-height: 100lvh;
+    background-color: var(--bg);
+}
+
+
+section.first {
+    background: url(../img/background-folder/background.png) var(--bg) no-repeat;
+    background-size: contain;
+    background-position: bottom;
+
+    display: flex;
+    align-items: center;
+
+}
+
+
+.title {
+    font-size: var(--header);
+}
+
+.label {
+    font-size: var(--small-label);
+}
+
+.content {
+    font-size: var(--content);
+}
+
+.big-label,
+.value {
+    font-size: var(--label);
+}
+
+
+.wrap {
+
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: column;
+
+}
+
+section .wrap {
+    margin: 20vh auto 40vh auto;
+    width: 85%;
+    min-height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+
+}
+
+
+/*card*/
+
+.person-card {
+    padding: 80px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.card-title {
+    font-weight: var(--bold);
+}
+
+.card-role {
+    color: var(--main);
+}
+
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sub-sub-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar-title {
+    font-weight: var(--light);
+}
+
+.value {
+    width: 70px;
+    height: 25px;
+}
+
+.progress-bar {
+    height: 25px;
+    width: 100%;
+    background: transparent;
+    border-radius: 5px;
+}
+
+.progress-bar span {
+    height: 100%;
+    display: block;
+}
+
+/*progress bar color*/
+/*level*/
+.level {
+    border: 1px solid var(--main);
+}
+
+.level span {
+    background: var(--main);
+}
+
+/*pro skill color*/
+.pro-skill {
+    border: 1px solid var(--second);
+}
+
+.pro-skill span {
+    background: var(--second);
+}
+
+/*soc skill color*/
+.soc-skill {
+    border: 1px solid var(--ascent);
+}
+
+.soc-skill span {
+    background: var(--ascent);
+}
+
+/*Hoang Linh*/
+.hLinh.level span {
+    width: 19%;
+}
+
+.hLinh.pro-skill span {
+    width: 30%;
+}
+
+.hLinh.soc-skill span {
+    width: 10%;
+}
+
+/*Hung*/
+
+.qHung.level span {
+    width: 25%;
+}
+
+.qHung.pro-skill span {
+    width: 70%;
+}
+
+.qHung.soc-skill span {
+    width: 50%;
+}
+
+/*Son*/
+
+.vSon.level span {
+    width: 0%;
+}
+
+.vSon.pro-skill span {
+    width: 50%;
+}
+
+.vSon.soc-skill span {
+    width: 45%;
+}
+
+/*Duong*/
+
+.tDuong.level span {
+    width: 0%;
+}
+
+.tDuong.pro-skill span {
+    width: 50%;
+}
+
+.tDuong.soc-skill span {
+    width: 25%;
+}
+
+/*Khoi Tran*/
+
+.tKhoi.level span {
+    width: 0%;
+}
+
+.tKhoi.pro-skill span {
+    width: 40%;
+}
+
+.tKhoi.soc-skill span {
+    width: 25%;
+}
+
+.task-list {
+    list-style: circle;
+    font-size: var(--small-label);
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+/*Khoi Nguyen*/
+
+.nKhoi.level span {
+    width: 0%;
+}
+
+.nKhoi.pro-skill span {
+    width: 45%;
+}
+
+.nKhoi.soc-skill span {
+    width: 30%;
+}
+
+.task-list {
+    list-style: circle;
+    font-size: var(--small-label);
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+/*contact*/
+.git {
+    color: var(--ascent);
+    transition: .2s ease-in-out;
+}
+
+.git:hover {
+    color: var(--black);
+}
+
+/*img*/
+
+
+
+.img-container {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+
+
+
+.first-card-img {
+    grid-column: 2/4;
+    background-image: url(../img/contribute-img/lappic.png);
+
+}
+
+.second-card-img {
+    grid-column: 1/3;
+    background-image: url(../img/contribute-img/er-diagram.png);
+    background-color: #d3d3d3;
+
+
+}
+
+.third-card-img.first {
+    background-image: url(../img/contribute-img/Hung.png);
+}
+
+.third-card-img.second {
+    background-image: url(../img/contribute-img/IMG_5650.jpeg);
+}
+
+.fourth-card-img {
+    background-image: url(../img/contribute-img/IMG_5637.jpeg);
+}
+
+.fifth-card-img {
+    background-image: url(../img/contribute-img/userflowmap.png);
+
+}
+
+.first-card-img,
+.second-card-img,
+.third-card-img,
+.fourth-card-img,
+.fifth-card-img {
+    background-color: #d3d3d3;
+    filter: grayscale(100%);
+}
+
+.fifth-card-img {
+    grid-column: 2/4;
+}
+
+
+.first-card,
+.first-card-img {
+    position: relative;
+}
+
+.fifth-row {
+    opacity: 0;
+}
+
+/*responsive*/
+
+@media (max-width: 1450px) {
+
+    :root {
+        --hero: 6rem;
+        --header: 2.25rem;
+        --small-header: 1.5rem;
+        --label: 1.5rem;
+        --small-label: 1rem;
+        --content: 1.125rem;
+        --small-content: 1rem;
+        --bold: 700;
+        --light: 400;
+    }
+
+    .person-card {
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+    }
+
+    .value {
+        width: 70px;
+        height: 20px;
+
+    }
+
+    .progress-bar {
+        height: 20px;
+        width: 100%;
+        background: transparent;
+        border-radius: 5px;
+    }
+
+}
+
+@media (max-width: 1300px) {}
+
+@media (max-width: 1030px) {
+
+    :root {
+        --header: 1.5rem;
+    }
+
+
+    .first-row .person-card {
+        grid-column: 1/3;
+    }
+
+    .second-row .person-card {
+        grid-column: 3/5;
+    }
+
+    .third-row .person-card {
+        grid-column: 1/3;
+    }
+
+    .fifth-row .person-card {
+        grid-column: 1/3;
+    }
+
+    .third-card-img.first,
+    .fourth-card-img {
+        display: none;
+    }
+
+    .third-card-img.second {
+        grid-column: 3/5;
+    }
+
+    .fourth-card {
+        grid-column: 1/3;
+    }
+
+    .fifth-card {
+        grid-column: 3/5;
+    }
+
+    .first-card-img,
+    .fifth-card-img {
+        grid-column: 3/5;
+    }
+
+    .person-card {
+        gap: 15px;
+    }
+
+    .grid-container.first-row,
+    .grid-container.second-row,
+    .grid-container.third-row,
+    .grid-container.fourth-row,
+    .grid-container.fifth-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .progress-bar-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+
+
+    *:not(.bar) {
+        overflow-y: hidden;
+        overflow: auto;
+    }
+
+    section .wrap {
+        margin: 10vh auto 15vh auto;
+        width: 90%;
+        min-height: 100vh;
+    }
+
+    .wrap,
+    .progress-bar-value,
+    .fourth-row {
+        overflow: hidden;
+    }
+
+    .big-label {
+        font-size: 2.5rem;
+    }
+
+
+    .person-card {
+        padding: 40px 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .value {
+        width: 55px;
+        height: 25px;
+    }
+
+    .grid-container {
+        grid-gap: 0px;
+    }
+
+    .grid-container.first-row,
+    .grid-container.second-row,
+    .grid-container.third-row,
+    .grid-container.fourth-row,
+    .grid-container.fifth-row {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .first-row .person-card {
+        grid-column: 1/2;
+    }
+
+    .second-row .person-card {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .second-card-img {
+        grid-row: 2/3;
+    }
+
+    .third-row .person-card {
+        grid-column: 1/3;
+    }
+
+    .fifth-row .person-card {
+        grid-column: 1/3;
+    }
+
+    .third-card-img.first,
+    .fourth-card-img {
+        display: none;
+    }
+
+    .third-card-img.second {
+        grid-column: 1/1;
+        grid-row: 2/3;
+    }
+
+    .fourth-card {
+        grid-column: 1/1;
+    }
+
+    .fifth-card {
+        grid-column: 1/1;
+    }
+
+    .first-card-img,
+    .fifth-card-img {
+        grid-column: 1/2;
+    }
+
+
+
+}
+
+@media (max-width: 420px) {}
+
+@media (max-width: 375px) {
+    .big-label {
+        font-size: 2rem;
+    }
+
+}

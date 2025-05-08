@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poppins&display=swap');
+@import url(menu.css);
+
+:root {
+    /* colors */
+    --main: #F9B572;
+    --second: #F2C57A;
+    --ascent: #EFC65C;
+    --bg: #F1F2E9;
+    --error: #ff6060;
+    --black: #000000;
+    --white: #ffffff;
+    --trans-white: rgba(255, 255, 255, .5);
+
+    /*additional*. */
+    --box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+
+    /* font size */
+    --hero: 6rem;
+    --header: 2.25rem;
+    --small-header: 1.5rem;
+    --label: 1.875rem;
+    --small-label: 1.25rem;
+    --content: 1.125rem;
+    --small-content: 1rem;
+    --bold: 700;
+    --light: 400;
+
+}
+
+section {
+    min-height: 100lvh;
+    background-color: var(--bg);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+section.fifth {
+    background: url(../img/background-folder/background.png) var(--bg) no-repeat;
+    background-size: contain;
+    background-position: bottom;
+
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.title {
+    font-size: var(--header);
+}
+
+.label {
+    font-size: var(--small-label);
+    margin-bottom: 10px;
+}
+
+.content {
+    font-size: var(--content);
+}
+
+.big-label,
+.value {
+    font-size: var(--label);
+}
+
+
+.wrap {
+
+
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    flex-direction: column;
+
+}
+
+
+
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background-color: var(--trans-white);
+
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    width: 50vw;
+
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+
+    width: 80%;
+    margin: 0 auto;
+}
+
+.personal-info h1 {
+    font-size: var(--label);
+    color: var(--main)
+}
+
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container img {
+    width: 70%;
+}
+
+.second .img-container img,
+.third .img-container img,
+.fourth .img-container img {
+    width: 80%;
+
+}
+
+.fifth .wrap {
+    margin: 0 auto;
+    width: 50%;
+    gap: 30px;
+    margin-bottom: 15vw;
+}
+
+.header {
+    font-size: calc(var(--header) * 1.5);
+    color: var(--main)
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+
+}

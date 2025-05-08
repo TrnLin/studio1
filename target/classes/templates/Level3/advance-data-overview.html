@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/mobile-bg/mobile.png"
+    />
+    <link rel="stylesheet" th:href="@{/css/advance-data.css}" />
+    <title>Advance Data</title>
+  </head>
+  <body>
+    <nav class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="alert">
+      <span class="material-icon">priority_high</span>
+      <div class="alert-content">Pls, complete the input form</div>
+    </div>
+
+    <section class="first">
+      <div class="wrap">
+        <!--Search bar-->
+        <form
+          class="form-search-bar"
+          th:action="@{/Advance}"
+          th:object="${input}"
+          method="post"
+        >
+          <div class="search-bar">
+            <div class="dropdown-list-search-bar">
+              <div class="custom-select">
+                <select th:field="*{selectedOption}" id="region-option">
+                  <option value="global">Global</option>
+                  <option value="global">Global</option>
+                  <option value="country">Country</option>
+                  <option value="city">City</option>
+                  <option value="state">State</option>
+                </select>
+              </div>
+              <div class="custom-select">
+                <select th:field="*{filterOption}" id="filter-option">
+                  <option value="nofilter">No Filter</option>
+                  <option value="nofilter">No Filter</option>
+                  <option value="filter">Filter</option>
+                </select>
+              </div>
+            </div>
+            <div class="input-container">
+              <div class="year-input-container country-name-input">
+                <div class="input-name">Region Name</div>
+                <input
+                  type="text"
+                  id="region-input"
+                  class="input-box"
+                  placeholder="User Input"
+                  th:field="*{regionName}"
+                  oninvalid="(validate())"
+                  oninput="this.setCustomValidity('')"
+                />
+              </div>
+              <div class="year-input-container">
+                <div class="input-name">Start Year</div>
+                <input
+                  type="text"
+                  id="starting-year-input"
+                  class="input-box"
+                  placeholder="User Input"
+                  th:field="*{startingYearStr}"
+                  oninvalid="(validate())"
+                  oninput="this.setCustomValidity('')"
+                  min="1750"
+                  max="2013"
+                  required
+                />
+              </div>
+              <div class="year-input-container">
+                <div class="input-name">Time Period</div>
+
+                <input
+                  type="number"
+                  id="period-year-input"
+                  class="input-box"
+                  placeholder="User Input"
+                  th:field="*{timePeriod}"
+                  oninvalid="(validate())"
+                  oninput="this.setCustomValidity('')"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="simi-check">
+                <div class="toggle-container">
+                  <input
+                    type="checkbox"
+                    id="enableSim"
+                    th:field="*{enableSim}"
+                  />
+                </div>
+
+                <label for="enableSim">Enable similarity</label>
+              </div>
+            </div>
+
+            <div class="btn-container">
+              <div class="submit-reset-btn-container">
+                <button class="button" id="submit">Submit</button>
+              </div>
+              <div class="download-btn-container">
+                <button
+                  class="button"
+                  onclick="window.open('/Advance/Download', '_blank')"
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="search-bar filter-bar">
+            <div class="input-container">
+              <div class="temperature-option-show content">Temperature</div>
+              <div class="custom-select">
+                <select th:field="*{filterSortOption}" id="filter-main-fill">
+                  <option value="popu">Population</option>
+                  <option value="popu">Population</option>
+                  <option value="temp">Temperature</option>
+                </select>
+              </div>
+              <div class="year-input-container country-name-input">
+                <div class="input-name">From</div>
+                <input
+                  type="number"
+                  id="from-range"
+                  class="input-box"
+                  placeholder="User Input"
+                  th:field="*{fromValue}"
+                />
+              </div>
+              <div class="year-input-container">
+                <div class="input-name">To</div>
+                <input
+                  type="number"
+                  id="to-range"
+                  class="input-box"
+                  placeholder="User Input"
+                  th:field="*{toValue}"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="dashboard">
+          <div class="dashboard-left">
+            <div class="dashboard-left-first-row">
+              <div class="info-box">
+                <div class="box-container">
+                  <div id="region-name" class="title" th:text="${regionName}">
+                    World
+                  </div>
+                  <div class="content-container">
+                    <div class="container">
+                      <div class="label">Avg Temperature</div>
+                      <span
+                        id="avg-temper"
+                        class="content"
+                        th:text="${avgTemp} + '°C'"
+                        >207</span
+                      >
+                    </div>
+                    <!-- <div class="container">
+                      <div class="label">Avg Population</div>
+                      <span id="avg-popu" class="content" th:text="${avgPopu}">WLD</span>
+                    </div> -->
+                  </div>
+                </div>
+
+                <div class="box-container">
+                  <div id="starting-year" class="title" th:text="${startYear}">
+                    1910
+                  </div>
+                  <div class="content-container">
+                    <div class="container">
+                      <div class="label">Population</div>
+                      <span
+                        id="starting-year-population"
+                        class="content"
+                        th:text="${startYearPopu}"
+                        >5.293.517.142</span
+                      >
+                    </div>
+                    <div class="container">
+                      <div class="label">Temperature</div>
+                      <span
+                        id="starting-year-temperature"
+                        class="content"
+                        th:text="${startYearTemp} + '°C'"
+                        >9.234°C</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="box-container">
+                  <div id="ending-year" class="title" th:text="${endYear}">
+                    2015
+                  </div>
+                  <div class="content-container">
+                    <div class="container">
+                      <div class="label">Population</div>
+                      <span
+                        id="ending-year-population"
+                        class="content"
+                        th:text="${endYearPopu}"
+                        >5.293.517.142</span
+                      >
+                    </div>
+                    <div class="container">
+                      <div class="label">Temperature</div>
+                      <span
+                        id="ending-year-temperature"
+                        class="content"
+                        th:text="${endYearTemp} + '°C'"
+                        >9.234°C</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-container">
+                <div class="title">Timeline</div>
+                <div class="table">
+                  <table id="timeline-table" class="available-country">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting</th>
+                        <th class="label">Period</th>
+                        <th class="label">Ending</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="item1, stat : ${array1}">
+                        <td th:text="${item1}"></td>
+                        <td th:text="${timePeriod}"></td>
+                        <td th:text="${array2[stat.index]}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-left-second-row">
+              <div class="region-filter-container">
+                <div class="title">Region Filter</div>
+                <div class="filter-container">
+                  <div class="custom-select">
+                    <select id="region-filter-sorting">
+                      <option value="asc">Ascending</option>
+                      <option value="asc">Ascending</option>
+                      <option value="dsc">Descending</option>
+                    </select>
+                  </div>
+                  <div class="custom-select">
+                    <select id="region-filter-popu-temp">
+                      <option value="popu">Population</option>
+                      <option value="popu">Population</option>
+                      <option value="temp">Temperature</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="list-container">
+                  <table class="available-country filter with-popu dsc popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterPopuSortPopuDesc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-popu asc popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterPopuSortPopuAsc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-popu dsc temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterPopuSortTempDesc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-popu asc temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterPopuSortTempAsc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-temp dsc popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterTempSortPopuDesc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-temp asc popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterTempSortPopuAsc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-temp dsc temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterTempSortTempDesc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country filter with-temp asc temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                        <th class="label">Difference in average (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${filterTempSortTempAsc}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.averageTemp}"></td>
+                        <td th:text="${input.averagePopulation}"></td>
+                        <td th:text="${input.averageTempDifference}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-left-third-row">
+              <div class="similarity-container">
+                <div class="title">Similarity</div>
+                <div class="filter-container">
+                  <div class="custom-select">
+                    <select id="abs-rel-option">
+                      <option value="abs">Abosolute</option>
+                      <option value="abs">Absolute</option>
+                      <option value="rel">Change</option>
+                    </select>
+                  </div>
+                  <div class="custom-select">
+                    <select id="m-sim-l-sim-option">
+                      <option value="mSim">Most Similar</option>
+                      <option value="mSim">Most Similar</option>
+                      <option value="lSim">Least Similar</option>
+                    </select>
+                  </div>
+                  <div class="custom-select">
+                    <select id="sim-popu-temp-option">
+                      <option value="popu">Population</option>
+                      <option value="popu">Population</option>
+                      <option value="temp">Temperature</option>
+                      <option value="both">Both</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!--Countries-->
+                <div class="list-container">
+                  <table class="available-country country abs sim popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <!-- <th class="label">Average Temperature (°C)</th> -->
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteMostSimOnlyPopu}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <!-- <td th:text="${input.temp}"></td> -->
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country abs sim temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <!-- <th class="label">Population</th> -->
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteMostSimOnlyTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <!-- <td th:text="${input.population}"></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country abs sim temp-popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteMostSimBoth}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country abs least-sim popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <!-- <th class="label">Average Temperature (°C)</th> -->
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteLeastSimOnlyPopu}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <!-- <td th:text="${input.temp}"></td> -->
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country abs least-sim temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <!-- <th class="label">Population</th> -->
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteLeastSimOnlyTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <!-- <td th:text="${input.population}"></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table
+                    class="available-country country abs least-sim temp-popu"
+                  >
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryAbsoluteLeastSimBoth}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country rel sim popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <!-- <th class="label">Average Temperature (°C)</th> -->
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeMostSimOnlyPopu}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <!-- <td th:text="${input.temp}"></td> -->
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country rel sim temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <!-- <th class="label">Population</th> -->
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeMostSimOnlyTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <!-- <td th:text="${input.population}"></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country rel sim temp-popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeMostSimBoth}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country rel least-sim popu">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+
+                        <th class="label">Name</th>
+                        <!-- <th class="label">Average Temperature (°C)</th> -->
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeLeastSimOnlyPopu}">
+                        <td th:text="${input.startingYear}"></td>
+
+                        <td th:text="${input.regionName}"></td>
+                        <!-- <td th:text="${input.temp}"></td> -->
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country country rel least-sim temp">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <!-- <th class="label">Population</th> -->
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeLeastSimOnlyTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <!-- <td th:text="${input.population}"></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table
+                    class="available-country country rel least-sim temp-popu"
+                  >
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                        <th class="label">Population</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CountryRelativeLeastSimBoth}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                        <td th:text="${input.population}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!--Cities/States-->
+                  <table class="available-country city-state abs sim">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CiStAbsoluteMostSimTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country city-state abs least-sim">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CiStAbsoluteLeastSimTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country city-state rel sim">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CiStRelativeMostSimTemp}">
+                        <td th:text="${input.startingYear}"></td>
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="available-country city-state rel least-sim">
+                    <thead>
+                      <div class="table-header">
+                        <th class="label">Starting Year</th>
+
+                        <th class="label">Name</th>
+                        <th class="label">Average Temperature (°C)</th>
+                      </div>
+                    </thead>
+                    <tbody>
+                      <tr th:each="input : ${CiStRelativeLeastSimTemp}">
+                        <td th:text="${input.startingYear}"></td>
+
+                        <td th:text="${input.regionName}"></td>
+                        <td th:text="${input.temp}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-right">
+            <div class="graph-container">
+              <div class="title">Temperature</div>
+              <canvas id="main-graph"></canvas>
+            </div>
+            <div class="compare-container">
+              <div class="title">Different in Average</div>
+              <div class="custom-select">
+                <select id="diffAvgSorting">
+                  <option value="asc">Ascending</option>
+                  <option value="asc">Ascending</option>
+                  <option value="dsc">Descending</option>
+                </select>
+              </div>
+              <div class="list-container">
+                <table class="available-country diff">
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Starting Year</th>
+                      <th class="label">Name</th>
+                      <th class="label">Average Temperature</th>
+                      <th class="label">Difference in average</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${diffInAve}">
+                      <td th:text="${input.startingYear}"></td>
+                      <td th:text="${input.regionName}"></td>
+                      <td th:text="${input.averageTemp}"></td>
+                      <td th:text="${input.averageTempDifference}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="available-country diff-dcs">
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Starting Year</th>
+                      <th class="label">Name</th>
+                      <th class="label">Average Temperature (°C)</th>
+                      <th class="label">Difference in average (°C)</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${diffInAveDesc}">
+                      <td th:text="${input.startingYear}"></td>
+                      <td th:text="${input.regionName}"></td>
+                      <td th:text="${input.averageTemp}"></td>
+                      <td th:text="${input.averageTempDifference}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="available-country diff-acs">
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Starting Year</th>
+                      <th class="label">Name</th>
+                      <th class="label">Average Temperature (°C)</th>
+                      <th class="label">Difference in average (°C)</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${diffInAveAsc}">
+                      <td th:text="${input.startingYear}"></td>
+                      <td th:text="${input.regionName}"></td>
+                      <td th:text="${input.averageTemp}"></td>
+                      <td th:text="${input.averageTempDifference}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="#" class="linked">About Us</a
+          ><a href="#" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="#" class="linked">Temperature Data</a
+          ><a href="#" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="#" class="linked">How to use</a
+          ><a href="#" class="linked">Credit</a>
+          <a href="#" class="linked">Sever 1</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="#" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="#" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script th:src="@{js/script.js}"></script>
+    <script th:src="@{js/advance-data.js}"></script>
+  </body>
+</html>

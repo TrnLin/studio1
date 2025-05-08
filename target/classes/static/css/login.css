@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@import url(menu.css);
+
+:root {
+    /* colors */
+    --main: #F9B572;
+    --second: #F2C57A;
+    --ascent: #EFC65C;
+    --bg: #F1F2E9;
+    --error: #ff6060;
+    --black: #000000;
+    --white: #ffffff;
+    --trans-white: rgba(255, 255, 255, .8);
+
+    /*additional*. */
+    --box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+
+    /* font size */
+    --hero: 6rem;
+    --header: 2.25rem;
+    --small-header: 1.5rem;
+    --label: 1.875rem;
+    --small-label: 1.25rem;
+    --content: 1.125rem;
+    --small-content: 1rem;
+    --bold: 700;
+    --light: 400;
+
+}
+
+section {
+    min-height: 100lvh;
+    background-color: var(--bg);
+
+
+}
+
+.circle {
+    width: 90vh;
+    height: 90vh;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(ellipse at 70% 60%, #c3e060 0%, rgba(195, 224, 96, 0) 90%), radial-gradient(ellipse at 30% 30%, #c3e060 0%, rgba(195, 224, 96, 0) 60%), radial-gradient(ellipse at bottom left, #00a3cb 0%, rgba(0, 163, 203, 0) 70%), linear-gradient(135deg, rgba(18, 46, 119, 0) 0%, rgba(18, 46, 119, 0) 75%, #122e77 100%), linear-gradient(to right, #625793 0%, #d55d64 35%, #e49129 65%, #c0671c 100%);
+    background-blend-mode: overlay, luminosity, color-dodge, saturation, screen, color;
+    filter: blur(100px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: animateBlob 5s infinite;
+}
+
+
+
+@keyframes animateBlob {
+
+    0%,
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+    }
+
+    34% {
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+
+    }
+
+    67% {
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 82.5%;
+    height: 100lvh;
+    display: flex;
+    align-items: center;
+}
+
+.login-card,
+.header-container,
+.button-container,
+.sub-input-container,
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card {
+    background-color: var(--trans-white);
+    position: relative;
+    padding: 100px 50px;
+    border-radius: 20px;
+
+    box-shadow: var(--box-shadow);
+
+    gap: 2.5em;
+}
+
+.header-container {
+    gap: 5px;
+}
+
+.header {
+    font-size: 2.5rem;
+}
+
+.header-content {
+    font-size: 1rem;
+    font-weight: var(--light);
+}
+
+.input-container {
+    gap: 15px;
+}
+
+.sub-input-container {
+    gap: 5px;
+}
+
+.label {
+    font-size: var(--small-label);
+}
+
+.input-box {
+    width: 100%;
+    border: 2px solid var(--black);
+    background-color: transparent;
+    padding: 1em;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+.input-box:focus {
+    outline: none;
+    border: 2px solid var(--main);
+}
+
+.button-container {
+    align-items: center;
+    gap: 15px;
+}
+
+.login,
+.signUp {
+    width: 100%;
+    color: var(--white);
+    border: none;
+    padding: .85em 0;
+    border-radius: .2em;
+    text-align: center;
+    transition: .2s ease-in-out;
+}
+
+.login {
+    background-color: var(--ascent);
+}
+
+.signUp {
+    background-color: var(--main);
+}
+
+.sign-up-card {
+    padding: 60px 50px;
+}
+
+@media (hover: hover) {
+
+    .login:hover,
+    .signUp:hover {
+        background-color: var(--black);
+    }
+
+}

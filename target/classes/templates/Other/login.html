@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/mobile-bg/mobile.png"
+    />
+    <link rel="stylesheet" href="../css/login.css" />
+    <title>Login Page</title>
+  </head>
+  <body>
+    <nav class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100vh"
+        height="100vh"
+      >
+        <filter id="n" x="0" y="0">
+          <feturbulence
+            type="fractalNoise"
+            baseFrequency="1"
+            stitchTiles="stitch"
+          />
+        </filter>
+        <rect width="100vh" height="100vh" fill="rgba(255, 255, 255, 0.1)" />
+        <rect width="100vh" height="100vh" filter="url(#n)" opacity="0.10" />
+      </svg>
+    </div>
+    <section class="first">
+      <div class="wrap">
+        <div class="login-card">
+          <div class="header-container">
+            <div class="header">Login</div>
+            <div class="header-content">
+              Welcome back! Please login to access your account.
+            </div>
+          </div>
+
+          <div class="input-container">
+            <div class="sub-input-container">
+              <div class="label">Email/Username</div>
+              <input
+                type="text"
+                class="input-box"
+                placeholder="Enter your Email/Username"
+                name="username"
+                id="username"
+              />
+            </div>
+
+            <div class="sub-input-container">
+              <div class="label">Password</div>
+              <input
+                type="password"
+                class="input-box"
+                placeholder="Enter your Password"
+                name="password"
+                id="password"
+              />
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button class="login label" id="login-button" onclick="login()">
+              Login
+            </button>
+            <div class="content">Or</div>
+            <a href="/register" class="signUp label">Register an Account</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/script.js" defer="true"></script>
+
+    <!-- this to post request -->
+    <script>
+      function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username == "" || password == "") {
+          alert("Please enter valid username and password");
+          document.getElementById("password").style.backgroundColor = "#ffaaaa";
+          document.getElementById("username").style.backgroundColor = "#ffaaaa";
+          console.log("Password or user name is empty");
+          return;
+        }
+
+        var data =
+          "username=" +
+          encodeURIComponent(username) +
+          "&password=" +
+          encodeURIComponent(password);
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/login", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              const response = xhr.responseText;
+              //HANDLE RESPONSE DATA
+              if (response == "PASS") {
+                alert("Login successfully");
+                window.location.href = "/";
+              } else {
+                alert("Invalid username or password");
+              }
+            } else {
+              console.error("Error:", xhr.status);
+            }
+          }
+        };
+
+        xhr.send(data);
+      }
+    </script>
+  </body>
+</html>

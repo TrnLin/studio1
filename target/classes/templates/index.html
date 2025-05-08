@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      th:href="@{img/mobile-bg/mobile.png}"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Project Studio</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="easter-egg-2">
+      <img th:src="@{img/mobile-bg/bigSquid.png}" alt="" class="squ" />
+    </div>
+    <div class="radiant-gradient-1"></div>
+    <div class="radiant-gradient-2"></div>
+    <div class="radiant-gradient-3"></div>
+    <div class="radiant-gradient-4"></div>
+
+    <!--Hero-->
+    <section class="first hero">
+      <div class="cloud-1">
+        <img th:src="@{img/background-folder/Cloud-1.svg}" alt="" />
+      </div>
+      <div class="cloud-2">
+        <img th:src="@{img/background-folder/Cloud-2.svg}" alt="" />
+      </div>
+      <div class="wrap">
+        <div class="hero-main">
+          <div class="hero-header header">
+            Temperature and<br />Population Analytics
+          </div>
+          <div class="hero-content content">
+            Population record from 53 continuous years<br />
+            Temperature record from 265 continuous years
+          </div>
+          <a href="/overview" class="button">Start Now</a>
+        </div>
+        <div class="hero-sub">
+          <div class="hero-sub-content content">
+            World’s Population from 1960 to 2013: <span> 3Bil - 7.7Bil</span>
+          </div>
+          <div class="hero-sub-content content">
+            World’s temperature from 1750 to 2015: <span> 8.72°C - 9.83°C</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--About-->
+    <section class="second about">
+      <div class="wrap">
+        <div class="about-container">
+          <div class="header">About <span>Us</span></div>
+          <div class="about-content content">
+            At Studio Project 1, our collaborative prowess in data analytics
+            sets us apart. With a shared commitment to extracting meaningful
+            insights, we specialize in transforming raw data into actionable
+            intelligence. Leveraging advanced analytics, our team contributes
+            significantly to informed decision-making, ensuring the success of
+            every project we undertake.
+          </div>
+          <a href="/Persona" class="button">About us</a>
+        </div>
+      </div>
+    </section>
+
+    <!--Contribute-->
+    <section class="third contribute">
+      <div class="wrap">
+        <div class="grid-container">
+          <div class="left">
+            <div class="header">Contribute</div>
+            <div class="contribute-content content">
+              This website was created by 6 wonderful people from RMIT
+              Information-Technology (BP162) class 2023 - 2026, and take 2
+              months complete. This is where you will get to know who are those
+              people and what they have done to bring this little project to
+              life.
+            </div>
+            <a href="/contribute" class="button">Learn More</a>
+          </div>
+          <div class="right">
+            <img th:src="@{img/background-folder/Coder.svg}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Data Analytic-->
+    <section class="fourth data-analytic-page">
+      <div class="wrap">
+        <div class="fourth-container">
+          <div class="header">Data Analytic</div>
+          <div class="data-content content">
+            Discover the intricate interplay between temperature dynamics and
+            population trends using our advanced research tools. Navigate
+            through comprehensive datasets effortlessly, uncovering correlations
+            and patterns that illuminate the relationship between temperature
+            fluctuations and population dynamics, offering invaluable insights
+            into their interconnectedness.
+          </div>
+          <a href="/overview" class="button">Start Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <div class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="/Persona" class="linked">About Us</a
+          ><a href="/contribute" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="/" class="linked">Temperature Data</a
+          ><a href="/" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="/" class="linked">How to use</a
+          ><a href="/" class="linked">Credit</a>
+          <a href="#" class="linked">Sever 1</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="/" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="/" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="/" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <button onclick="easterEgg1()" class="fish social-linked">
+              <ion-icon name="fish-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+        <div class="footer-section-container easter-container">
+          <div class="footer-content easter">
+            "Nghia climb up a Mountain and<br />
+            see the Way to the ... "
+            <div class="author">
+              <button class="easter-egg-btn" onclick="easterEgg()">
+                TrnLinh
+              </button>
+              - 2024
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script th:src="@{/js/herropage.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+  </body>
+</html>

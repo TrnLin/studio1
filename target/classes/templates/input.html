@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Climate data center</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form - Countries</h1>
+
+    <select id="option" name="option" onchange="showForm()">
+        <option value="World" selected>World</option>
+        <option value="Country">Country</option>
+    </select>
+    
+    <div id="formWorld" style="display:block">
+        <form action="#" 
+        th:action="@{/World}" 
+        th:object="${input}" 
+        method="post">
+
+            <p>Start year 
+                <input 
+                type="number" 
+                th:field="*{startYear}" />
+            </p>
+            <p>End year 
+                <input 
+                type="number" 
+                th:field="*{endYear}" />
+            </p>
+
+            <!-- <label for="order">Order</label>
+            <select name="order" th:field="*{order}">
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+            </select> -->
+        
+            <!-- <label for="sortBy">Sort by</label>
+            <select name="sortBy" th:field="*{sortBy}">
+                <option value="Temperature">Temperature</option>
+                <option value="Population">Population</option>
+            </select> -->
+        
+            <!-- <label for="cityState">City/State</label>
+            <select name="cityState" th:field="*{cityState}">
+                <option value="City">City</option>
+                <option value="State">State</option>
+            </select> -->
+
+            <!-- <label>Temperature type sort:</label>
+                <input type="radio" th:field="*{type}" th:value="'aveTemp'" checked="checked" /> Average Temperature
+                <input type="radio" th:field="*{type}" th:value="'minTemp'" /> Minimum Temperature
+                <input type="radio" th:field="*{type}" th:value="'maxTemp'" /> Maximum Temperature -->
+
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
+        <p th:text="'World'"/>
+        <p th:text="'Country: 202'"/>
+        <p th:text="'Code: WLD'"/>
+        <p th:text="${startYearGet}"/>
+        <p th:text="'Population: ' + ${startPopulationWorld}"/>
+        <p th:text="'Temperature: ' + ${startTempWorld}"/>
+        <p th:text="${endYearGet}"/>
+        <p th:text="'Population: ' + ${endPopulationWorld}"/>
+        <p th:text="'Temperature: ' + ${endTempWorld}"/>
+    </div>
+
+    <div id="formCountry" style="display:none">
+
+        <form action="#" th:action="@{/Countries}" th:object="${input}" method="post">
+
+            <p>Country <input type="text" th:field="*{countryName}" /></p>
+            <p>Start year <input type="number" th:field="*{startYear}" /></p>
+            <p>End year <input type="number" th:field="*{endYear}" /></p>
+
+            <!-- <label for="order">Order</label>
+            <select name="order" th:field="*{order}">
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+            </select> -->
+        
+            <!-- <label for="sortBy">Sort by</label>
+            <select name="sortBy" th:field="*{sortBy}">
+                <option value="Temperature">Temperature</option>
+                <option value="Population">Population</option>
+            </select> -->
+        
+            <label for="cityState">City/State</label>
+            <select name="cityState" th:field="*{cityState}">
+                <option value="City">City</option>
+                <option value="State">State</option>
+            </select>
+
+            <label>Temperature type sort:</label>
+                <input type="radio" th:field="*{type}" th:value="'aveTemp'" checked="checked" /> Average Temperature
+                <input type="radio" th:field="*{type}" th:value="'minTemp'" /> Minimum Temperature
+                <input type="radio" th:field="*{type}" th:value="'maxTemp'" /> Maximum Temperature
+
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
+
+        <p th:text="${countryNameGet}"/>
+        <p th:text="${startYearGet}"/>
+        <p th:text="'Population: ' + ${startPopulationCountry}"/>
+        <p th:text="'Temperature: ' + ${startTempCountry}"/>
+        <p th:text="${endYearGet}"/>
+        <p th:text="'Population: ' + ${startPopulationCountry}"/>
+        <p th:text="'Temperature: ' + ${startTempCountry}"/>
+
+    </div>
+
+    <script>
+        function showForm() {
+            // get the value of the selected option
+            var option = document.getElementById("option").value;
+            // hide all the forms
+            document.getElementById("formWorld").style.display = "none";
+            document.getElementById("formCountry").style.display = "none";
+            // show the form that matches the option
+            if (option == "World") {
+                document.getElementById("formWorld").style.display = "block";
+            } else if (option == "Country") {
+                document.getElementById("formCountry").style.display = "block";
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

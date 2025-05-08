@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Climate data center</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form - Countries</h1>
+    <form action="#" th:action="@{/Countries}" th:object="${input}" method="post">
+
+    	<p>Country Name <input type="text" th:field="*{countryName}" /></p>
+        <p>Start year <input type="number" th:field="*{startYear}" /></p>
+        <p>End year <input type="number" th:field="*{endYear}" /></p>
+
+        <label for="order">Order</label>
+        <select name="order" th:field="*{order}">
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+        </select>
+    
+        <label for="sortBy">Sort by</label>
+        <select name="sortBy" th:field="*{sortBy}">
+            <option value="Temperature">Temperature</option>
+            <option value="Population">Population</option>
+        </select>
+    
+        <label for="cityState">City/State</label>
+        <select name="cityState" th:field="*{cityState}">
+            <option value="City">City</option>
+            <option value="State">State</option>
+        </select>
+
+        <label>Temperature type sort:</label>
+            <input type="radio" th:field="*{type}" th:value="'aveTemp'" checked="checked" /> Average Temperature
+            <input type="radio" th:field="*{type}" th:value="'minTemp'" /> Minimum Temperature
+            <input type="radio" th:field="*{type}" th:value="'maxTemp'" /> Maximum Temperature
+
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

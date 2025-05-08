@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/mobile-bg/mobile.png"
+    />
+    <link rel="stylesheet" th:href="@{/css/data-overview.css}" />
+    <title>Project Studio</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert">
+      <span class="material-icon">priority_high</span>
+      <div class="alert-content">Pls, complete the input form</div>
+    </div>
+    <section class="first">
+      <div class="wrap">
+        <!--World/Country option-->
+        <div class="custom-select">
+          <select id="world-country-option">
+            <option value="country">Country</option>
+            <option value="world">World</option>
+            <option value="country">Country</option>
+          </select>
+        </div>
+
+        <!--Search bar-->
+        <form
+          class="search-bar"
+          id="world-search-bar"
+          th:action="@{/World}"
+          th:object="${input}"
+          method="post"
+        >
+          <div class="input-container">
+            <div class="year-input-container">
+              <div class="input-name">Start year</div>
+              <input
+                type="number"
+                class="input-box"
+                id="start-year"
+                placeholder="User Input"
+                th:field="*{startYear}"
+                oninvalid="(validate())"
+                oninput="this.setCustomValidity('')"
+                min="1750"
+                max="2013"
+                novalidate
+                required
+              />
+            </div>
+            <div class="year-input-container">
+              <div class="input-name">End year</div>
+              <input
+                type="number"
+                class="input-box"
+                id="end-year"
+                placeholder="User Input"
+                th:field="*{endYear}"
+                oninvalid="(validate())"
+                oninput="this.setCustomValidity('')"
+                min="1750"
+                max="2013"
+                novalidate
+                required
+              />
+            </div>
+          </div>
+          <div class="submit-reset-btn-container">
+            <button class="button" id="submit">Submit</button>
+          </div>
+        </form>
+
+        <form
+          class="search-bar"
+          id="country-search-bar"
+          th:action="@{/Countries}"
+          th:object="${input}"
+          method="post"
+        >
+          <div class="input-container">
+            <div class="year-input-container country-name-input">
+              <div class="input-name">Country Name</div>
+              <input
+                type="text"
+                id="country-input"
+                class="input-box"
+                placeholder="User Input"
+                th:field="*{countryName}"
+                oninvalid="(validate())"
+                oninput="this.setCustomValidity('')"
+                novalidate
+                required
+              />
+            </div>
+            <div class="year-input-container">
+              <div class="input-name">Start year</div>
+              <input
+                type="text"
+                class="input-box"
+                id="country-start-year"
+                placeholder="User Input"
+                th:field="*{startYear}"
+                oninvalid="(validate())"
+                oninput="this.setCustomValidity('')"
+                novalidate
+                required
+              />
+            </div>
+            <div class="year-input-container">
+              <div class="input-name">End year</div>
+              <input
+                type="text"
+                class="input-box"
+                id="country-end-year"
+                placeholder="User Input"
+                th:field="*{endYear}"
+                oninvalid="(validate())"
+                oninput="this.setCustomValidity('')"
+                novalidate
+                required
+              />
+            </div>
+          </div>
+          <div class="submit-reset-btn-container">
+            <button class="button" id="submit">Submit</button>
+          </div>
+        </form>
+
+        <!--Data diagram-->
+        <div class="dashboard">
+          <div class="dashboard-first-row">
+            <div class="info-box">
+              <div class="box-container">
+                <div
+                  id="region-name"
+                  class="title"
+                  th:text="${input.countryName}"
+                >
+                  World
+                </div>
+                <div class="content-container">
+                  <div class="container">
+                    <div class="label">Cities/States</div>
+                    <span
+                      id="availabel-countries"
+                      class="content"
+                      th:text="${ciStNum}"
+                    />
+                  </div>
+                  <div class="container">
+                    <div class="label">Country Code</div>
+                    <span
+                      id="country-code"
+                      class="content"
+                      th:text="${countryCode}"
+                      >WLD</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-container">
+                <div
+                  id="starting-year"
+                  class="title"
+                  th:text="${input.startYear}"
+                />
+                <div class="content-container">
+                  <div class="container">
+                    <div class="label">Population</div>
+                    <span
+                      id="starting-year-population"
+                      class="content"
+                      th:text="${startPopulationCountry}"
+                    />
+                  </div>
+                  <div class="container">
+                    <div class="label">Temperature</div>
+                    <span
+                      id="starting-year-temperature"
+                      class="content"
+                      th:text="${startTempCountry} + '°C'"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-container">
+                <div
+                  id="ending-year"
+                  class="title"
+                  th:text="${input.endYear}"
+                />
+                <div class="content-container">
+                  <div class="container">
+                    <div class="label">Population</div>
+                    <span
+                      id="ending-year-population"
+                      class="content"
+                      th:text="${endPopulationCountry}"
+                    />
+                  </div>
+                  <div class="container">
+                    <div class="label">Temperature</div>
+                    <span
+                      id="ending-year-temperature"
+                      class="content"
+                      th:text="${endTempCountry} + '°C'"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Graph-->
+            <div class="table-container">
+              <div class="title">Population</div>
+              <div class="graph">
+                <canvas id="population"></canvas>
+              </div>
+            </div>
+            <div class="table-container">
+              <div class="title">Temperature</div>
+              <div class="graph">
+                <canvas id="temperature"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-second-row">
+            <div class="add-info-container">
+              <div class="title">Additional Info</div>
+              <div class="change-container">
+                <div class="label">Temperature Change:</div>
+                <div
+                  class="change-content content"
+                  id="temp-change"
+                  th:text="${temperatureRaw} + '(' + ${temperatureProportion} + '%)'"
+                />
+              </div>
+              <div class="change-container">
+                <div class="label">Population Change</div>
+                <div
+                  class="change-content content"
+                  id="popu-change"
+                  th:text="${populationRaw} + '(' + ${populationProportion} + '%)'"
+                />
+              </div>
+              <div class="change-container">
+                <div class="label">Time period</div>
+                <div
+                  class="change-content content"
+                  th:text="${timePeriod}  + ' years'"
+                />
+              </div>
+              <!-- <div class="change-container">
+                <div class="location-wrap">
+                  <div class="latitude-container">
+                    <div class="label">Latitude</div>
+                    <div class="content" id="latidude">40.99N</div>
+                  </div>
+                  <div class="longitude-container">
+                    <div class="label">Longitude</div>
+                    <div class="content" id="longitude">19.17E</div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+
+            <!--Country Only-->
+            <!--Available Country-->
+            <div class="avai-container">
+              <div class="title">Countries</div>
+              <div class="dropdown-container">
+                <div class="custom-select order">
+                  <select id="order-countries">
+                    <option value="dsc">Descending</option>
+                    <option value="dsc">Descending</option>
+                    <option value="asc">Ascending</option>
+                  </select>
+                </div>
+
+                <div class="custom-select popu-temp">
+                  <select id="popu-temp-order">
+                    <option value="popu">Population</option>
+                    <option value="popu">Population</option>
+                    <option value="temp">Temperature</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="list-container">
+                <table
+                  id="available-country-temp-desc"
+                  class="available-country"
+                >
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Country Name</th>
+                      <th class="label">Temperature</th>
+                      <th class="label">Population</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${sortByTempDesc}">
+                      <td th:text="${input.countries}"></td>
+                      <td th:text="${input.tempStr} + '°C'"></td>
+                      <td th:text="${input.populationStr}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table
+                  id="available-country-popu-desc"
+                  class="available-country"
+                >
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Country Name</th>
+                      <th class="label">Temperature</th>
+                      <th class="label">Population</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${sortByPopuDesc}">
+                      <td th:text="${input.countries}"></td>
+                      <td th:text="${input.tempStr} + '°C'"></td>
+                      <td th:text="${input.populationStr}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table
+                  id="available-country-temp-asc"
+                  class="available-country"
+                >
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Country Name</th>
+                      <th class="label">Temperature</th>
+                      <th class="label">Population</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${sortByTempAsc}">
+                      <td th:text="${input.countries}"></td>
+                      <td th:text="${input.tempStr} + '°C'"></td>
+                      <td th:text="${input.populationStr}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table
+                  id="available-country-popu-asc"
+                  class="available-country"
+                >
+                  <thead>
+                    <div class="table-header">
+                      <th class="label">Country Name</th>
+                      <th class="label">Temperature</th>
+                      <th class="label">Population</th>
+                    </div>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${sortByPopuAsc}">
+                      <td th:text="${input.countries}"></td>
+                      <td th:text="${input.tempStr} + '°C'"></td>
+                      <td th:text="${input.populationStr}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!--Country Only-->
+            <!--City and State-->
+            <div class="city-state-container">
+              <div class="custom-select state-city-option">
+                <select id="city-state">
+                  <option value="city">City</option>
+                  <option value="state">State</option>
+                  <option value="city">City</option>
+                </select>
+              </div>
+              <div class="dropdown-container">
+                <div class="custom-select order">
+                  <select id="city-state-sorting">
+                    <option value="asc">Ascending</option>
+                    <option value="asc">Ascending</option>
+                    <option value="dsc">Descending</option>
+                  </select>
+                </div>
+
+                <div class="custom-select min-max-avg">
+                  <select id="max-min-avg-sorting">
+                    <option value="avg">Average</option>
+                    <option value="avg">Average</option>
+                    <option value="max">Maximum</option>
+                    <option value="min">Minimum</option>
+                  </select>
+                </div>
+              </div>
+              <div class="list-container">
+                <table id="city-avg-desc" class="city avg desc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Average Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityAveDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.avgTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="city-min-desc" class="city min desc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Minimum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityMinDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.minTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="city-max-desc" class="city max desc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Maximum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityMaxDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.maxTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-avg-desc" class="state avg desc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Average Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateAveDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.avgTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-min-desc" class="state min desc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Minimum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateMinDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.minTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-max-desc" class="state max desc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Maximum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateMaxDesc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.maxTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="city-avg-asc" class="city avg asc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Average Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityAveAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.avgTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="city-min-asc" class="city min asc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Minimum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityMinAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.minTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="city-max-asc" class="city max asc">
+                  <thead>
+                    <tr>
+                      <th class="label">City</th>
+                      <th class="label">Maximum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${cityMaxAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.maxTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-avg-asc" class="state avg asc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Average Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateAveAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.avgTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-min-asc" class="state min asc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Minimum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateMinAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.minTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table id="state-max-asc" class="state max asc">
+                  <thead>
+                    <tr>
+                      <th class="label">State</th>
+                      <th class="label">Maximum Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="input : ${stateMaxAsc}">
+                      <td th:text="${input.city}"></td>
+                      <td th:text="${input.maxTemp} + '%'"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="#" class="linked">About Us</a
+          ><a href="#" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="#" class="linked">Temperature Data</a
+          ><a href="#" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="#" class="linked">How to use</a
+          ><a href="#" class="linked">Credit</a>
+          <a href="#" class="linked">Sever 1</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="#" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="#" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script th:src="@{js/script.js}"></script>
+    <script th:src="@{js/data-overview.js}"></script>
+  </body>
+</html>

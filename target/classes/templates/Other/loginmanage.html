@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/login-manage.css" />
+    <title>Account management</title>
+  </head>
+  <body>
+    <!--Header-->
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="*">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="login.html"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+            <li>
+              <a href="*"
+                ><span>Setting</span>
+                <span class="material-icon">settings</span></a
+              >
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <section class="first">
+      <div class="wrap">
+        <div class="grid-container">
+          <div class="user-account-card">
+            <div class="title">User Account</div>
+            <div class="acc-info-container">
+              <div class="acc-info-header label">Account Information</div>
+              <div class="acc-info-content content">
+                <div class="username-container">
+                  Username:
+                  <span id="username" th:text="${username}">Imasquid123</span>
+                </div>
+                <div class="email-container">
+                  Email: <span id="email" th:text="${email}"></span>
+                </div>
+                <div class="dob-container">
+                  D.O.B: <span id="dob">01/09/2005</span>
+                </div>
+                <div class="country-container">
+                  Country: <span id="country">Vietnam</span>
+                </div>
+              </div>
+              <a href="#" class="button update-info">Update Information</a>
+            </div>
+            <div class="security-container">
+              <div class="security-header label">Security</div>
+              <div class="pass-container">
+                Password: <span id="password">**********</span>
+              </div>
+
+              <!-- <a href="#" class="button change-password">Change Password</a> -->
+            </div>
+            <a href="/logout" class="button delete-account">Log Out</a>
+          </div>
+          <div class="weather-forecast-container weathers">
+            <div class="search-bar-container">
+              <input
+                type="text"
+                class="search-bar"
+                placeholder="Search for city"
+              />
+              <button id="country-search">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+              </button>
+            </div>
+            <div class="weather-container">
+              <div class="city-container">
+                <div class="city hero">Hanoi</div>
+                <img src="" alt="" class="icon" />
+              </div>
+              <div class="sub-info-container">
+                <div class="dis-container">
+                  <div class="description header">Cloudy</div>
+                  <div class="temp sub-header"></div>
+                </div>
+                <div class="hum-container">
+                  <div>
+                    <div class="header">Humidity</div>
+                    <div class="humidity sub-header">60%</div>
+                  </div>
+                </div>
+                <div class="wind-container">
+                  <div>
+                    <div class="header">Wind Speed</div>
+                    <div class="wind sub-header">4m/s</div>
+                  </div>
+                </div>
+                <div class="min-max-container">
+                  <div>
+                    <div class="header">Min / Max</div>
+                    <span class="tempMinMax sub-header">30°C /</span>
+                  </div>
+                </div>
+                <div class="time-zone-container">
+                  <div>
+                    <div class="header">Time zone</div>
+                    <div class="time-zone sub-header">7</div>
+                  </div>
+                </div>
+                <div class="pressure-container">
+                  <div class="header">Pressure</div>
+                  <div class="pressure sub-header">1000 hPa</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100vh"
+        height="100vh"
+      >
+        <filter id="n" x="0" y="0">
+          <feturbulence
+            type="fractalNoise"
+            baseFrequency="1"
+            stitchTiles="stitch"
+          />
+        </filter>
+        <rect width="100vh" height="100vh" fill="rgba(255, 255, 255, 0.1)" />
+        <rect width="100vh" height="100vh" filter="url(#n)" opacity="0.10" />
+      </svg>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/login-manage.js"></script>
+  </body>
+</html>

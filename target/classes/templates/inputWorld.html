@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Climate data center</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form - World</h1>
+    <form action="#" th:action="@{/World}" th:object="${input}" method="post">
+
+        <p>Start year <input type="number" th:field="*{startYear}" /></p>
+        <p>End year <input type="number" th:field="*{endYear}" /></p>
+
+        <label for="order">Order</label>
+        <select name="order" th:field="*{order}">
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+        </select>
+    
+        <label for="sortBy">Sort by</label>
+        <select name="sortBy" th:field="*{sortBy}">
+            <option value="Temperature">Temperature</option>
+            <option value="Population">Population</option>
+        </select>
+    
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

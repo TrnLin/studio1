@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result - Countries</h1>
+
+    <p th:text="'Country Name: ' + ${input.countryName}" />
+    <p th:text="'Start year: ' + ${input.startYear}" />
+    <p th:text="'End year: ' + ${input.endYear}" />
+    <!-- <p th:text="'Order: ' + ${input.order}" />
+    <p th:text="'Sort by: ' + ${input.sortBy}" /> -->
+    <!-- <p th:text="'City/State: ' + ${input.cityState}" /> -->
+
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>AvgTemp</th>
+                <th>MinTemp</th>
+                <th>MaxTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i : ${#numbers.sequence(0, #lists.size(resultCity) - 1)}">
+                <td th:text="${resultCity[i]}"></td>
+                <td th:text="${resultAvgTemp[i]}"></td>
+                <td th:text="${resultMinTemp[i]}"></td>
+                <td th:text="${resultMaxTemp[i]}"></td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <table id="state-city-ranking">
+        <thead>
+            <tr>
+                <th class="label">City</th>
+                <th class="label">AvgTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${cityAveDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.avgTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>MinTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${cityMinDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.minTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>MaxTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${cityMaxDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.maxTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>AvgTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${stateAveDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.avgTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>MinTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${stateMinDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.minTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>MaxTemp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="input : ${stateMaxDesc}">
+                <td th:text="${input.city}"></td>
+                <td th:text="${input.maxTemp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p th:text="${resultCountry}"/>
+      
+    <a href="/Countries">Submit another message</a>
+    <a href="/">Go back to homepage</a>
+</body>
+</html>
