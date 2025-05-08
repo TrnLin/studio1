@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SQL</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>SQL</h1>
+            <p>SQL is a standard language for storing, manipulating and retrieving data in databases.</p>
+            <p>Our SQL tutorial will teach you how to use SQL in: MySQL, SQL Server, MS Access, Oracle, Sybase, Informix,
+                Postgres, and other database systems.</p>
+            <p><a href="https://www.w3schools.com/sql/default.asp">SQL Tutorial</a>
+                <a href="/sql/get_csv">download</a>
+            </p>
+            <form action="sql" style="display: inline;" method="post">
+                <!-- <input type="text" style="width: 80vw; height: 10vh; vertical-align: top;" th:value="${queryValue}" placeholder="query" name="query"/> -->
+                <textarea style="width: 80vw; height: 10vh; line-height: 1.2; resize: none;" th:text="${queryValue}" placeholder="query" name="query"></textarea>
+                <button>submit</button>
+                
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+            var outputTable = /*[[${queryResult}]]*/ null;
+            document.getElementById("result").innerHTML = outputTable;
+        /*]]>*/
+        </script>
+</body>
+</html>

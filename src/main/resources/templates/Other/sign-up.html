@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/login.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <nav class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="../index.html">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span>Guest</span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100vh"
+        height="100vh"
+      >
+        <filter id="n" x="0" y="0">
+          <feturbulence
+            type="fractalNoise"
+            baseFrequency="1"
+            stitchTiles="stitch"
+          />
+        </filter>
+        <rect width="100vh" height="100vh" fill="rgba(255, 255, 255, 0.1)" />
+        <rect width="100vh" height="100vh" filter="url(#n)" opacity="0.10" />
+      </svg>
+    </div>
+    <section class="first">
+      <div class="wrap">
+        <div class="login-card sign-up-card">
+          <div class="header-container">
+            <div class="header">Sign Up</div>
+            <div class="header-content">
+              Welcome! Please Sign Up to access our features.
+            </div>
+          </div>
+
+          <div class="input-container">
+            <div class="sub-input-container">
+              <div class="label">Email/Username</div>
+              <input
+                type="text"
+                class="input-box"
+                placeholder="Enter your Email/Username"
+                id="username"
+                name="username"
+              />
+            </div>
+            <div class="sub-input-container">
+              <div class="label">Password</div>
+              <input
+                type="password"
+                class="input-box"
+                placeholder="Enter your Password"
+                id="password"
+                name="password"
+              />
+            </div>
+            <div class="sub-input-container">
+              <div class="label">Confirm Password</div>
+              <input
+                type="password"
+                class="input-box"
+                placeholder="Re-enter your Password"
+                id="confirmPassword"
+                name="confirmPassword"
+              />
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button class="login label" name="signUpButton" onclick="signUp()">
+              Sign Up
+            </button>
+            <!-- <button class="login label" name="test" onclick="test()">TestButton</button> -->
+
+            <div class="content">Or</div>
+            <a href="/login" class="signUp label"
+              >Already have an Account? Sign In</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/script.js"></script>
+    <script>
+      function signUp() {
+        var password = document.getElementById("password").value;
+        var username = document.getElementById("username").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        // VERIFY INPUT THAT NO FIELD IS EMPTY
+        if (username == "" || password == "" || confirmPassword == "") {
+          alert("Please fill in all the fields");
+          return;
+        }
+
+        // VERIFY INPUT THAT PASSWORD AND CONFIRM PASSWORD ARE THE SAME
+        if (password != confirmPassword) {
+          alert("Password and Confirm Password are not the same");
+          document.getElementById("password").value = "";
+          document.getElementById("confirmPassword").value = "";
+          return;
+        }
+        //CREATE A POST REQUEST TO SERVER
+
+        const data =
+          "username=" +
+          encodeURIComponent(username) +
+          "&password=" +
+          encodeURIComponent(password) +
+          "&confirmPassword=" +
+          encodeURIComponent(confirmPassword);
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/register", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var response = xhr.responseText;
+              if (response == "FAIL") {
+                alert("Cannot Register with this username.");
+                return;
+              } else if (response == "PASS") {
+                alert("Register successfully.");
+                console.log("Register successfully");
+                window.location.href = "/login";
+              }
+            } else {
+              console.log("Error: " + xhr.status);
+            }
+          }
+        };
+        xhr.send(data);
+      }
+    </script>
+  </body>
+</html>

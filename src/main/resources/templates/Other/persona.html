@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/mobile-bg/mobile.png"
+    />
+    <link rel="stylesheet" th:href="@{/css/persona.css}" />
+    <title>About</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}">h</span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <!--Section-->
+    <section class="first">
+      <div class="grid-container first-row">
+        <div class="personal-info">
+          <h1 th:text="${Persona1}" class="content"></h1>
+          <div>
+            <b class="label">BACKGROUND</b>
+            <ul th:each="item:${Persona1Background}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">GOAL</b>
+            <ul th:each="item:${Persona1Goal}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">IDEAL EXPERIENCE</b>
+            <ul th:each="item:${Persona1IdealExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">SKILL EXPERIENCE</b>
+            <ul th:each="item:${Persona1SkillExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="img-container">
+        <img th:src="@{img/personas/visual-data.svg}" alt="" />
+      </div>
+    </section>
+    <section class="second">
+      <div class="grid-container first-row">
+        <div class="personal-info">
+          <h1 th:text="${Persona2}"></h1>
+          <div>
+            <b class="label">BACKGROUND</b>
+            <ul th:each="item:${Persona2Background}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">GOAL</b>
+            <ul th:each="item:${Persona2Goal}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">IDEAL EXPERIENCE</b>
+            <ul th:each="item:${Persona2IdealExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">SKILL EXPERIENCE</b>
+            <ul th:each="item:${Persona2SkillExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="img-container">
+        <img th:src="@{img/personas/data-report.svg}" alt="" />
+      </div>
+    </section>
+    <section class="third">
+      <div class="grid-container first-row">
+        <div class="personal-info">
+          <h1 th:text="${Persona3}"></h1>
+          <div>
+            <b class="label">BACKGROUND</b>
+            <ul th:each="item:${Persona3Background}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">GOAL</b>
+            <ul th:each="item:${Persona3Goal}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">IDEAL EXPERIENCE</b>
+            <ul th:each="item:${Persona3IdealExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">SKILL EXPERIENCE</b>
+            <ul th:each="item:${Persona3SkillExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="img-container">
+        <img th:src="@{img/personas/Group.svg}" alt="" />
+      </div>
+    </section>
+    <section class="fourth">
+      <div class="grid-container first-row">
+        <div class="personal-info">
+          <h1 th:text="${Persona4}"></h1>
+          <div>
+            <b class="label">BACKGROUND</b>
+            <ul th:each="item:${Persona4Background}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">GOAL</b>
+            <ul th:each="item:${Persona4Goal}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">IDEAL EXPERIENCE</b>
+            <ul th:each="item:${Persona4IdealExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+          <div>
+            <b class="label">SKILL EXPERIENCE</b>
+            <ul th:each="item:${Persona4SkillExperince}">
+              <li th:utext="${item}" class="content"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="img-container">
+        <img th:src="@{img/personas/savetime.svg}" alt="" />
+      </div>
+    </section>
+    <section class="fifth">
+      <div class="wrap">
+        <div class="header">Mission Statement</div>
+        <div class="content content-container">
+          <div class="content-graph">
+            For a long time, Population and Temperature data analytics have been
+            and still are one of the most tedious tasks for both new and
+            professional users. It takes a lot of time for the user to gather,
+            sort, and then analyze the data. Thus we need to have a solution to
+            help not only beginners but also professionals who have been working
+            in this field for many years and have multiple experiences working
+            with large amounts of data.
+          </div>
+          <div class="content-graph">
+            Project Studio 1 was created to address some problems that the user
+            interfered with while researching Population and Temperature change.
+            Through advanced analytics and a user-friendly interface, we provide
+            the user with a comprehensive solution to not only scratch the
+            surface of data analytics but also look deep into the relationship
+            between human growth and its impact on the environment.
+          </div>
+          <div class="content-graph">
+            With the advance of technology throughout the year. Project Studio 1
+            has been able to analyze the data with a sophisticated algorithm
+            that provides the user with the quickest and also the most accurate
+            data on the platform about temperature and population based on the
+            user combination and input. It delivers a robust and intuitive user
+            experience, which enables users to dive deep into the data and also
+            understand the connections between population growth and global
+            temperature trends.
+          </div>
+          <div class="content-graph">
+            Furthermore, PS1 also focuses on the user experience for both new
+            come and advanced users. We provide data visualization tools and
+            interactive features. Our product creates an in-depth analysis
+            experience with different datasets, correlation, etc etc, and also
+            several features for beginners to scratch the surface of the data.
+          </div>
+          <div class="content-graph">
+            Finally, our website hopes to reduce the amount of time users need
+            to research, gather, and analyze the data. Our goal is also to
+            create a product that closes the gap between scientific insight and
+            actionable information and provides information for users to address
+            different social problems while acting as the central hub for
+            climate change data collection and acquisition, further shortening
+            the time spent by researchers in finding valuable climate-related
+            data.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <div class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="#" class="linked">About Us</a
+          ><a href="#" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="#" class="linked">Temperature Data</a
+          ><a href="#" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="#" class="linked">How to use</a
+          ><a href="#" class="linked">Credit</a>
+          <a href="#" class="linked">Sever 1</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="#" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="#" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script th:src="@{js/script.js}"></script>
+  </body>
+</html>

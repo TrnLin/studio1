@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/mobile-bg/mobile.png"
+    />
+    <link rel="stylesheet" th:href="@{/css/contribute.css}" />
+    <title>Contribute</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="mobile">
+        <div class="hamburger-menu"><div class="bar"></div></div>
+        <div class="logo">
+          <a href="/">Project Studio</a>
+        </div>
+      </div>
+      <div class="mobile-nav hide">
+        <ul>
+          <div class="top-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Persona">About</a></li>
+            <li><a href="/contribute">Contribute</a></li>
+            <li>
+              <div class="dropdown">
+                <span class="dropbtn">
+                  Data Analytics
+                  <span class="material-icon">expand_more</span>
+                </span>
+                <div class="dropdown-content">
+                  <a href="/overview">Data Overview</a>
+                  <a href="/advance">Advance Data Analyst</a>
+                </div>
+              </div>
+            </li>
+          </div>
+
+          <div class="bottom-nav">
+            <li>
+              <a href="/login"
+                ><span th:text="${username}"></span>
+                <span class="material-icon">person</span>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <!--Section-->
+    <section class="first">
+      <div class="wrap">
+        <div class="grid-container first-row">
+          <div class="person-card first-card">
+            <div class="card-header">
+              <div class="card-title big-label">Trn H.Linh</div>
+              <div class="card-role label">Front - End dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s4043097@rmit.edu.vn</div>
+              <div class="github">
+                GitHub: <a href="" class="git">TrnLin</a>
+              </div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level hLinh">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">19</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill hLinh">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">30%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill hLinh">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">10%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>+ Create User Flow Map and Sites Map</li>
+                <li>+ Create, Modify User Personas</li>
+                <li>+ Create and Product Wireframe</li>
+                <li>+ Develope web UI</li>
+              </ul>
+            </div>
+          </div>
+          <div class="img-container first-card-img"></div>
+        </div>
+
+        <div class="grid-container second-row">
+          <div class="img-container second-card-img"></div>
+          <div class="person-card second-card">
+            <div class="card-header">
+              <div class="card-title big-label">Trn Q.Hung</div>
+              <div class="card-role label">Full - Stack dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s4027060@rmit.edu.vn</div>
+              <div class="github">GitHub: <a href="#" class="git">#</a></div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level qHung">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">25</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill qHung">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">70%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill qHung">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">50%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>
+                  + Create, configure and document Gateway GeoLoadbalancer Proxy
+                </li>
+                <li>+ Data Cleaning & Method Documentation</li>
+                <li>+ Create, configure and document Back End Environment</li>
+                <li>+ Product Architechture Design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-container third-row">
+          <div class="img-container third-card-img first"></div>
+          <div class="person-card third-card">
+            <div class="card-header">
+              <div class="card-title big-label">Ng V.Son</div>
+              <div class="card-role label">Back - End dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s4052257@rmit.edu.vn</div>
+              <div class="github">GitHub: <a href="#" class="git">#</a></div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level vSon">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">?</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill vSon">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">50%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill vSon">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">45%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>+ ER Model Creation (initiative)</li>
+                <li>+ Databse Schema Creation (initiative)</li>
+                <li>+ JDBC connect Development</li>
+                <li>+ DB Development</li>
+              </ul>
+            </div>
+          </div>
+          <div class="img-container third-card-img second"></div>
+        </div>
+
+        <div class="grid-container fourth-row">
+          <div class="person-card fourth-card">
+            <div class="card-header">
+              <div class="card-title big-label">Ng T.Duong</div>
+              <div class="card-role label">Back - End dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s4031925@rmit.edu.vn</div>
+              <div class="github">GitHub: <a href="#" class="git">#</a></div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level tDuong">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">?</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill tDuong">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">50%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill tDuong">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">25%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>+ ER Model Creation (initiative)</li>
+                <li>+ Databse Schema Creation (initiative)</li>
+                <li>+ JDBC connect Development</li>
+                <li>+ Creating Users Personas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="img-container fourth-card-img"></div>
+          <div class="person-card fifth-card">
+            <div class="card-header">
+              <div class="card-title big-label">Trn D.Khoi</div>
+              <div class="card-role label">Back - End dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s4015143@rmit.edu.vn</div>
+              <div class="github">GitHub: <a href="#" class="git">#</a></div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level tKhoi">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">?</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill tKhoi">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">40%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill tKhoi">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">25%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>+ Creating Users Personas</li>
+                <li>
+                  + Spring Boot, Play Framework & JDBC (Java Database
+                  Connectivity) research
+                </li>
+                <li>+ Hosting Environment Research</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-container fifth-row">
+          <div class="person-card">
+            <div class="card-header">
+              <div class="card-title big-label">Ng Tuan M.Khoi</div>
+              <div class="card-role label">Front - End dev</div>
+            </div>
+            <div class="contact-container label">
+              <div class="email">Email: s3995060@rmit.edu.vn</div>
+              <div class="github">GitHub: <a href="" class="git">#</a></div>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Level</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar level nKhoi">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">?</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Programming Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar pro-skill nKhoi">
+                    <span></span>
+                  </div>
+
+                  <div class="progress-bar-value value">45%</div>
+                </div>
+              </div>
+              <div class="progress-bar-sub-container">
+                <div class="progress-bar-title label">Socialize Skill</div>
+                <div class="sub-sub-container">
+                  <div class="progress-bar soc-skill nKhoi">
+                    <span></span>
+                  </div>
+                  <div class="progress-bar-value value">30%</div>
+                </div>
+              </div>
+            </div>
+            <div class="task-container">
+              <div class="task-header big-label">Task</div>
+              <ul class="task-list">
+                <li>+ Spring Boot Testing</li>
+                <li>+ Apache Tomcat Testing</li>
+                <li>+ Hosting Environment Research</li>
+                <li>+ JDBC Testing & Development</li>
+              </ul>
+            </div>
+          </div>
+          <div class="img-container fifth-card-img"></div>
+        </div>
+      </div>
+    </section>
+    <!--Footer-->
+    <div class="footer">
+      <div class="wrap">
+        <div class="footer-section-container">
+          <div class="small-header">About</div>
+          <a href="#" class="linked">About Us</a
+          ><a href="#" class="linked">Contribute</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Database</div>
+          <a href="#" class="linked">Temperature Data</a
+          ><a href="#" class="linked">Population Data</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Help and FAQs</div>
+          <a href="#" class="linked">How to use</a
+          ><a href="#" class="linked">Credit</a>
+          <a href="#" class="linked">Sever 1</a>
+        </div>
+        <div class="footer-section-container">
+          <div class="small-header">Contact Us</div>
+          <div class="social-linked-container">
+            <a href="#" class="facebook social-linked"
+              ><ion-icon name="logo-facebook"></ion-icon
+            ></a>
+            <a href="#" class="instagram social-linked"
+              ><ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#" class="twitter social-linked"
+              ><ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script th:src="@{js/contribute.js}"></script>
+    <script th:src="@{js/script.js}"></script>
+  </body>
+</html>

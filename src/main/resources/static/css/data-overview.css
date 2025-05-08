@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url(menu.css);
+
+:root {
+    /* colors */
+    --main: #F9B572;
+    --second: #F2C57A;
+    --ascent: #EFC65C;
+    --bg: #F1F2E9;
+    --error: #ff6060;
+    --black: #000000;
+    --white: #ffffff;
+    --trans-white: rgba(255, 255, 255, .5);
+
+
+    /*additional*. */
+    --box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+
+
+    /* font size */
+    --hero: 6.25rem;
+    --header: 2.25rem;
+    --small-header: 1.5rem;
+    --label: 1.875rem;
+    --small-label: 1.25rem;
+    --content: 1.125rem;
+    --small-content: 1rem;
+
+}
+
+
+
+*:not(canvas) {
+    overflow: initial !important;
+}
+
+
+section {
+    min-height: 100lvh;
+}
+
+.first {
+    background: url(../img/background-folder/background.png) var(--bg) no-repeat;
+    background-size: contain;
+    background-position: bottom;
+
+    display: flex;
+    align-items: center;
+
+
+}
+
+.wrap {
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+
+
+}
+
+.first .wrap {
+    margin: 10vh 0 40vh 0;
+}
+
+/*dropdown list*/
+.custom-select {
+    position: relative;
+    width: max-content;
+    padding: 0 15px;
+}
+
+.custom-select select {
+    display: none;
+
+}
+
+.select-selected {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "expand_more";
+    font-family: 'Material Icons';
+    right: calc(0px - 70px);
+    transition: .2s;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    transform: rotate(180deg);
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+    color: var(--black);
+    font-size: calc(var(--small-content) * 4);
+    cursor: pointer;
+    user-select: none;
+    transition: .2s;
+}
+
+.select-items div {
+    font-size: var(--label);
+    padding: 5px 10px;
+}
+
+/*style items (options):*/
+.select-items {
+    top: 110%;
+    left: 0;
+    right: 0;
+
+    position: absolute;
+    background-color: var(--white);
+    padding: 15px 15px;
+    border-radius: 10px;
+
+    z-index: 99;
+    color: var(--black);
+    box-shadow: var(--box-shadow);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.select-items div:hover {
+    color: var(--main);
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+    display: none;
+}
+
+
+/*Search bar*/
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px;
+    background: var(--white);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+}
+
+.input-container {
+    display: flex;
+    gap: 65px;
+}
+
+.year-input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.submit-reset-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button {
+    font-size: var(--content);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: max-content;
+    background-color: var(--main);
+    transition: .2s ease-in-out;
+    border: none;
+}
+
+#reset {
+    background: var(--error);
+}
+
+.input-name {
+    font-size: var(--small-label);
+    color: var(--black);
+}
+
+.input-box::placeholder {
+    font-size: var(--small-content);
+}
+
+.input-box {
+    padding: 10px 15px;
+    border: 2px solid var(--black);
+    border-radius: 4px;
+    width: 175px;
+    transition: .2s;
+}
+
+.input-box:focus {
+    border-color: var(--main);
+}
+
+
+/*data dashboard*/
+.dashboard,
+.dashboard-first-row,
+.dashboard-second-row {
+
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+.dashboard {
+    margin-top: 15px;
+    flex-direction: column;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.box-container,
+.table-container,
+.avai-container,
+.add-info-container,
+.city-state-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 30px 30px;
+    width: 100%;
+    height: auto;
+
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    color: var(--black);
+
+}
+
+.content-container .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px
+}
+
+#region-name {
+    width: max-content;
+}
+
+.title {
+    font-size: var(--header);
+}
+
+.label {
+    font-size: var(--small-label);
+}
+
+.content {
+    font-size: var(--content);
+}
+
+.big-label {
+    font-size: var(--label);
+}
+
+/*graph*/
+
+
+.graph {
+    width: 100%;
+    height: 100%;
+}
+
+/*Available country*/
+.avai-container {
+    width: 100%;
+    height: 400px;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "expand_more";
+    font-family: 'Material Icons';
+    right: calc(0px - 70px);
+    transition: .2s;
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: row;
+    width: calc(100%);
+
+    gap: 10px;
+}
+
+.order,
+.popu-temp,
+.min-max-average {
+    font-size: var(--small-content);
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.dropdown-container .select-items div,
+.dropdown-container .select-selected {
+    font-size: var(--small-content);
+}
+
+.avai-container .select-selected:after {
+    right: calc(0px + 15px);
+}
+
+.avai-container .custom-select .select-selected {
+    padding: 0px 30px 0px 0px;
+}
+
+.list-container {
+    overflow: auto !important;
+    height: 100%;
+
+}
+
+table {
+    border-collapse: collapse;
+    overflow: auto !important;
+    width: 100%;
+
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: rgb(241, 241, 241);
+}
+
+.available-country th:nth-child(1),
+.available-country th:nth-child(2) {
+    text-align: left;
+}
+
+.available-country th:nth-child(3) {
+    text-align: center;
+}
+
+
+.available-country td:nth-child(1),
+.available-country td:nth-child(2) {
+    padding: 2px 5vw 2px 0;
+}
+
+.available-country td:nth-child(3) {
+    padding: 2px 20px 2px;
+}
+
+
+
+/*Additional info*/
+
+.add-info-container {
+    width: 50%;
+    gap: 15px;
+}
+
+.change-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.change-content .percentage {
+    font-size: var(--small-content);
+}
+
+.location-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/*City and State*/
+.city-state-container {
+    width: 100%;
+    height: 400px;
+}
+
+.city-state-container .select-selected {
+    font-size: var(--header);
+    padding: 0px 30px 0px 0px;
+}
+
+.city-state-container .dropdown-container .select-selected {
+    font-size: var(--small-content);
+    padding: 0px 30px 0px 0px;
+}
+
+
+.city-state-container .select-selected:after {
+    right: calc(0px - 10px);
+}
+
+.city-state-container .dropdown-container .select-selected:after {
+    right: calc(0px);
+}
+
+
+#state-city-ranking tr {
+    height: 20px;
+}
+
+.city-state-container tr .label {
+    text-align: left;
+
+
+}
+
+.city-state-container tr .label:nth-child(1) {
+    width: 50%;
+}
+
+.city-state-container tr .label:nth-child(2) {
+    padding: 0 4vw 0 0;
+}
+
+
+#state-city-ranking td:nth-child(even) {
+    text-align: right;
+
+}
+
+
+/*World option trigger*/
+.city-state-container,
+.avai-container,
+#country-search-bar,
+.add-info-container {
+    display: none;
+}
+
+#available-country-popu-desc {
+    display: block;
+}
+
+.alert {
+    display: none;
+    align-items: center;
+    gap: 10px;
+
+    background-color: var(--error);
+    color: var(--white);
+    border-radius: 10px;
+    width: max-content;
+    padding: 15px 20px;
+
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.alert .material-icon {
+    color: var(--white);
+}
+
+@media (hover: hover) {
+
+    .button:hover,
+    #reset:hover {
+        background-color: var(--black);
+    }
+}
